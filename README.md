@@ -1,6 +1,14 @@
-# BigQuery UDF 저장소
+# BigQuery UDF with TypeScript
 
-* TypeScript & BigQuery Native SQL을 이용해서 BigQuery Function을 만들어요.
+(This repository is a derivative work based on [bigquery-udf-typescript](https://github.com/hotoku/bigquery-udf-typescript) by [hotoku](https://github.com/hotoku).)
+
+
+## With this repository you can..
+
+* Develop a BigQuery UDF from a code base written in typescript that allows you to define somewhat complicated behavior.
+* Make BigQuery UDFs equivalent to [UDAF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-Built-inAggregateFunctions(UDAF))/[UDTF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-Built-inTable-GeneratingFunctions(UDTF)) of Hive.
+* Test UDFs in both of Typescript level and SQL level.
+* Bundle and Deploy UDFs to GCS and as persistent BigQuery functions.
 
 
 ## Dependencies
@@ -8,7 +16,7 @@
 * node
 * jinja2-cli
   * `brew install jinja2-cli`
-* google-cloud-sdk (gsutil, bq)
+* google-cloud-sdk (`gsutil, bq`)
 
 
 ## Workflows
@@ -24,13 +32,11 @@
     * Upload the bundled js into the GCS bucket to the path containing a commit sha string.
 
 
-## UDF 목록
+## Sample UDFs
 * [JsonMerge](#jsonmergejson1-string-json2-string---string)
 * [JsonFilterKeys](#jsonexcludenulljson-string---string)
 * [JsonExcludeNull](#jsonfilterkeysjson-string-keys-array-include-bool---string)
 
-
-## UDF 설명
 
 ### [JsonMerge(json1 STRING, json2 STRING) -> String](src/JsonUDF/JsonMerge.ts)
 
